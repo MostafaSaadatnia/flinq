@@ -1,0 +1,22 @@
+{
+  "name": "tinq",
+  "version": "1.0.0",
+  "description": "\"Tinq\" is a powerful and intuitive TypeScript library inspired by LINQ, offering a seamless and type-safe way to query and manipulate collections. With Tinq, you can write expressive and readable code to filter, transform, aggregate, and perform various operations on arrays and other iterable data structures. Enjoy the benefits of a fluent API, strong type checking, and a rich set of LINQ-like methods in your TypeScript projects.",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lomanatech/tinq.git"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "author": "functional",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lomanatech/tinq/issues"
+  },
+  "homepage": "https://github.com/lomanatech/tinq#readme"
+}
