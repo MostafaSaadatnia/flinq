@@ -1,4 +1,4 @@
-namespace Tinq {
+namespace Flinq {
     export class Queryable<T> {
         private collection: T[];
 
@@ -68,7 +68,7 @@ namespace Tinq {
 
         min(selector: (item: T) => any): T | undefined {
             return this.collection.reduce((min, curr) => {
-                const minValue = selector(min);
+                const minValue = selector(min!);
                 const currValue = selector(curr);
                 return minValue < currValue ? min : curr;
             }, this.collection[0]);
@@ -76,7 +76,7 @@ namespace Tinq {
 
         max(selector: (item: T) => any): T | undefined {
             return this.collection.reduce((max, curr) => {
-                const maxValue = selector(max);
+                const maxValue = selector(max!);
                 const currValue = selector(curr);
                 return maxValue > currValue ? max : curr;
             }, this.collection[0]);
@@ -187,7 +187,7 @@ const data: Person[] = [
 ];
 
 // Example 1: Filtering and Projection
-const result1 = new Tinq.Queryable(data)
+const result1 = new Flinq.Queryable(data)
     .where(person => person.age > 22)
     .orderBy(person => person.age)
     .select(person => person.name)
@@ -197,11 +197,11 @@ console.log(result1);
 // Output: ['Bob', 'Sophie', 'Sara']
 
 // Example 2: Aggregation
-const count = new Tinq.Queryable(data).count();
-const sumAges = new Tinq.Queryable(data).sum(person => person.age);
-const minAge = new Tinq.Queryable(data).min(person => person.age);
-const maxAge = new Tinq.Queryable(data).max(person => person.age);
-const averageAge = new Tinq.Queryable(data).average(person => person.age);
+const count = new Flinq.Queryable(data).count();
+const sumAges = new Flinq.Queryable(data).sum(person => person.age);
+const minAge = new Flinq.Queryable(data).min(person => person.age);
+const maxAge = new Flinq.Queryable(data).max(person => person.age);
+const averageAge = new Flinq.Queryable(data).average(person => person.age);
 
 console.log(`Count: ${count}`);
 console.log(`Sum of Ages: ${sumAges}`);
@@ -210,26 +210,26 @@ console.log(`Max Age: ${maxAge?.age}`);
 console.log(`Average Age: ${averageAge}`);
 
 // Example 3: Quantifiers
-const anyOver30 = new Tinq.Queryable(data).any(person => person.age > 30);
-const allOver20 = new Tinq.Queryable(data).all(person => person.age > 20);
+const anyOver30 = new Flinq.Queryable(data).any(person => person.age > 30);
+const allOver20 = new Flinq.Queryable(data).all(person => person.age > 20);
 
 console.log(`Any person over 30: ${anyOver30}`);
 console.log(`All persons over 20: ${allOver20}`);
 
 // Example 4: Element Operations
-const firstPerson = new Tinq.Queryable(data).firstOrDefault();
-const lastPerson = new Tinq.Queryable(data).lastOrDefault();
-const singlePerson = new Tinq.Queryable(data).singleOrDefault({ id: 6, name: 'Mostafa', age: 31 });
+const firstPerson = new Flinq.Queryable(data).firstOrDefault();
+const lastPerson = new Flinq.Queryable(data).lastOrDefault();
+const singlePerson = new Flinq.Queryable(data).singleOrDefault({ id: 6, name: 'Mostafa', age: 31 });
 
 console.log(`First Person: ${JSON.stringify(firstPerson)}`);
 console.log(`Last Person: ${JSON.stringify(lastPerson)}`);
 console.log(`Single Person (Alice): ${JSON.stringify(singlePerson)}`);
 
 // Example 5: Set Operations
-const distinctAges = new Tinq.Queryable(data).select(person => person.age).distinct().getCollection();
-const unionResult = new Tinq.Queryable(data).union([{ id: 6, name: 'David', age: 28 }]).getCollection();
-const intersectResult = new Tinq.Queryable(data).intersect([{ id: 2, name: 'Alice', age: 30 }]).getCollection();
-const exceptResult = new Tinq.Queryable(data).except([{ id: 4, name: 'Sophie', age: 22 }]).getCollection();
+const distinctAges = new Flinq.Queryable(data).select(person => person.age).distinct().getCollection();
+const unionResult = new Flinq.Queryable(data).union([{ id: 6, name: 'David', age: 28 }]).getCollection();
+const intersectResult = new Flinq.Queryable(data).intersect([{ id: 2, name: 'Alice', age: 30 }]).getCollection();
+const exceptResult = new Flinq.Queryable(data).except([{ id: 4, name: 'Sophie', age: 22 }]).getCollection();
 
 console.log(`Distinct Ages: ${JSON.stringify(distinctAges)}`);
 console.log(`Union Result: ${JSON.stringify(unionResult)}`);
@@ -237,18 +237,18 @@ console.log(`Intersect Result: ${JSON.stringify(intersectResult)}`);
 console.log(`Except Result: ${JSON.stringify(exceptResult)}`);
 
 // Example 6: Partitioning and Concatenation
-const take2 = new Tinq.Queryable(data).take(2).getCollection();
-const skip2 = new Tinq.Queryable(data).skip(2).getCollection();
-const concatResult = new Tinq.Queryable(data).concat([{ id: 6, name: 'David', age: 28 }]).getCollection();
+const take2 = new Flinq.Queryable(data).take(2).getCollection();
+const skip2 = new Flinq.Queryable(data).skip(2).getCollection();
+const concatResult = new Flinq.Queryable(data).concat([{ id: 6, name: 'David', age: 28 }]).getCollection();
 
 console.log(`Take 2: ${JSON.stringify(take2)}`);
 console.log(`Skip 2: ${JSON.stringify(skip2)}`);
 console.log(`Concat Result: ${JSON.stringify(concatResult)}`);
 
 // Example 7: Conversion
-const arrayResult = new Tinq.Queryable(data).toArray();
-const listResult = new Tinq.Queryable(data).toList();
-const dictionaryResult = new Tinq.Queryable(data).toDictionary(person => person.id);
+const arrayResult = new Flinq.Queryable(data).toArray();
+const listResult = new Flinq.Queryable(data).toList();
+const dictionaryResult = new Flinq.Queryable(data).toDictionary(person => person.id);
 
 console.log(`Array Result: ${JSON.stringify(arrayResult)}`);
 console.log(`List Result: ${JSON.stringify(listResult)}`);

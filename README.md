@@ -1,21 +1,21 @@
-# Tinq
+# Flinq
 
-[![npm version](https://badge.fury.io/js/tinq.svg)](https://www.npmjs.com/package/tinq)
+[![npm version](https://badge.fury.io/js/flinq.svg)](https://www.npmjs.com/package/flinq)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Tinq is a powerful TypeScript library inspired by LINQ, offering a seamless and type-safe way to query and manipulate collections. With Tinq, you can write expressive and readable code to filter, transform, aggregate, and perform various operations on arrays and other iterable data structures. Enjoy the benefits of a fluent API, strong type checking, and a rich set of LINQ-like methods in your TypeScript projects.
+Flinq is a powerful TypeScript library inspired by LINQ, offering a seamless and type-safe way to query and manipulate collections. With Flinq, you can write expressive and readable code to filter, transform, aggregate, and perform various operations on arrays and other iterable data structures. Enjoy the benefits of a fluent API, strong type checking, and a rich set of LINQ-like methods in your TypeScript projects.
 
 ## Installation
 
-Install Tinq using npm:
+Install Flinq using npm:
 
 ```bash
-npm install tinq
+npm install flinq
 ```
 ## Usage
 
 ```typescript
-import { Tinq, Queryable } from 'tinq';
+import { Flinq, Queryable } from 'flinq';
 
 interface Person {
     id: number;
@@ -29,7 +29,7 @@ const data: Person[] = [
     // Add more data
 ];
 
-const result = new Tinq.Queryable(data)
+const result = new Flinq.Queryable(data)
     .where(person => person.age > 22)
     .orderBy(person => person.age)
     .select(person => person.name)
@@ -55,13 +55,13 @@ console.log(result);
 
 
 ## Documentation
-For detailed documentation and examples, visit the Tinq Documentation.
+For detailed documentation and examples, visit the Flinq Documentation.
 
 ## Contributing
 We welcome contributions! See CONTRIBUTING.md for more information.
 
 ## License
-Tinq is released under the MIT License.
+Flinq is released under the MIT License.
 
 ## Acknowledgments
-Tinq is inspired by the LINQ library for C#.
+Flinq is inspired by the LINQ library for C#.
