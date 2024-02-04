@@ -15,7 +15,7 @@ npm install tinq
 ## Usage
 
 ```typescript
-import { Queryable } from 'tinq';
+import { Tinq, Queryable } from 'tinq';
 
 interface Person {
     id: number;
