@@ -1,4 +1,4 @@
-namespace MyLinq {
+namespace Tinq {
     export class Queryable<T> {
         private collection: T[];
 
@@ -187,7 +187,7 @@ const data: Person[] = [
 ];
 
 // Example 1: Filtering and Projection
-const result1 = new MyLinq.Queryable(data)
+const result1 = new Tinq.Queryable(data)
     .where(person => person.age > 22)
     .orderBy(person => person.age)
     .select(person => person.name)
@@ -197,11 +197,11 @@ console.log(result1);
 // Output: ['Bob', 'Sophie', 'Sara']
 
 // Example 2: Aggregation
-const count = new MyLinq.Queryable(data).count();
-const sumAges = new MyLinq.Queryable(data).sum(person => person.age);
-const minAge = new MyLinq.Queryable(data).min(person => person.age);
-const maxAge = new MyLinq.Queryable(data).max(person => person.age);
-const averageAge = new MyLinq.Queryable(data).average(person => person.age);
+const count = new Tinq.Queryable(data).count();
+const sumAges = new Tinq.Queryable(data).sum(person => person.age);
+const minAge = new Tinq.Queryable(data).min(person => person.age);
+const maxAge = new Tinq.Queryable(data).max(person => person.age);
+const averageAge = new Tinq.Queryable(data).average(person => person.age);
 
 console.log(`Count: ${count}`);
 console.log(`Sum of Ages: ${sumAges}`);
@@ -210,26 +210,26 @@ console.log(`Max Age: ${maxAge?.age}`);
 console.log(`Average Age: ${averageAge}`);
 
 // Example 3: Quantifiers
-const anyOver30 = new MyLinq.Queryable(data).any(person => person.age > 30);
-const allOver20 = new MyLinq.Queryable(data).all(person => person.age > 20);
+const anyOver30 = new Tinq.Queryable(data).any(person => person.age > 30);
+const allOver20 = new Tinq.Queryable(data).all(person => person.age > 20);
 
 console.log(`Any person over 30: ${anyOver30}`);
 console.log(`All persons over 20: ${allOver20}`);
 
 // Example 4: Element Operations
-const firstPerson = new MyLinq.Queryable(data).firstOrDefault();
-const lastPerson = new MyLinq.Queryable(data).lastOrDefault();
-const singlePerson = new MyLinq.Queryable(data).singleOrDefault({ id: 6, name: 'Mostafa', age: 31 });
+const firstPerson = new Tinq.Queryable(data).firstOrDefault();
+const lastPerson = new Tinq.Queryable(data).lastOrDefault();
+const singlePerson = new Tinq.Queryable(data).singleOrDefault({ id: 6, name: 'Mostafa', age: 31 });
 
 console.log(`First Person: ${JSON.stringify(firstPerson)}`);
 console.log(`Last Person: ${JSON.stringify(lastPerson)}`);
 console.log(`Single Person (Alice): ${JSON.stringify(singlePerson)}`);
 
 // Example 5: Set Operations
-const distinctAges = new MyLinq.Queryable(data).select(person => person.age).distinct().getCollection();
-const unionResult = new MyLinq.Queryable(data).union([{ id: 6, name: 'David', age: 28 }]).getCollection();
-const intersectResult = new MyLinq.Queryable(data).intersect([{ id: 2, name: 'Alice', age: 30 }]).getCollection();
-const exceptResult = new MyLinq.Queryable(data).except([{ id: 4, name: 'Sophie', age: 22 }]).getCollection();
+const distinctAges = new Tinq.Queryable(data).select(person => person.age).distinct().getCollection();
+const unionResult = new Tinq.Queryable(data).union([{ id: 6, name: 'David', age: 28 }]).getCollection();
+const intersectResult = new Tinq.Queryable(data).intersect([{ id: 2, name: 'Alice', age: 30 }]).getCollection();
+const exceptResult = new Tinq.Queryable(data).except([{ id: 4, name: 'Sophie', age: 22 }]).getCollection();
 
 console.log(`Distinct Ages: ${JSON.stringify(distinctAges)}`);
 console.log(`Union Result: ${JSON.stringify(unionResult)}`);
@@ -237,18 +237,18 @@ console.log(`Intersect Result: ${JSON.stringify(intersectResult)}`);
 console.log(`Except Result: ${JSON.stringify(exceptResult)}`);
 
 // Example 6: Partitioning and Concatenation
-const take2 = new MyLinq.Queryable(data).take(2).getCollection();
-const skip2 = new MyLinq.Queryable(data).skip(2).getCollection();
-const concatResult = new MyLinq.Queryable(data).concat([{ id: 6, name: 'David', age: 28 }]).getCollection();
+const take2 = new Tinq.Queryable(data).take(2).getCollection();
+const skip2 = new Tinq.Queryable(data).skip(2).getCollection();
+const concatResult = new Tinq.Queryable(data).concat([{ id: 6, name: 'David', age: 28 }]).getCollection();
 
 console.log(`Take 2: ${JSON.stringify(take2)}`);
 console.log(`Skip 2: ${JSON.stringify(skip2)}`);
 console.log(`Concat Result: ${JSON.stringify(concatResult)}`);
 
 // Example 7: Conversion
-const arrayResult = new MyLinq.Queryable(data).toArray();
-const listResult = new MyLinq.Queryable(data).toList();
-const dictionaryResult = new MyLinq.Queryable(data).toDictionary(person => person.id);
+const arrayResult = new Tinq.Queryable(data).toArray();
+const listResult = new Tinq.Queryable(data).toList();
+const dictionaryResult = new Tinq.Queryable(data).toDictionary(person => person.id);
 
 console.log(`Array Result: ${JSON.stringify(arrayResult)}`);
 console.log(`List Result: ${JSON.stringify(listResult)}`);
