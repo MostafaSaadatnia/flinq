@@ -1,6 +1,6 @@
 {
   "name": "flinq",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "\"Flinq\" is a powerful and intuitive TypeScript library inspired by LINQ, offering a seamless and type-safe way to query and manipulate collections. With Flinq, you can write expressive and readable code to filter, transform, aggregate, and perform various operations on arrays and other iterable data structures. Enjoy the benefits of a fluent API, strong type checking, and a rich set of LINQ-like methods in your TypeScript projects.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

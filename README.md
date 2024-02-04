@@ -15,7 +15,7 @@ npm install flinq
 ## Usage
 
 ```typescript
-import { Flinq, Queryable } from 'flinq';
+import { Queryable } from 'flinq';
 
 interface Person {
     id: number;
@@ -29,7 +29,7 @@ const data: Person[] = [
     // Add more data
 ];
 
-const result = new Flinq.Queryable(data)
+const result = new Queryable(data)
     .where(person => person.age > 22)
     .orderBy(person => person.age)
     .select(person => person.name)
