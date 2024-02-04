@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/lomanatech/tinq/issues"
   },
-  "homepage": "https://github.com/lomanatech/tinq#readme"
+  "homepage": "https://github.com/lomanatech/tinq#readme",
+  "publishConfig": {
+    "@mostafasaadatnia:registry": "https://npm.pkg.github.com"
+  }
 }
