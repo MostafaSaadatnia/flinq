@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Queryable = void 0;
-// namespace Flinq {
 class Queryable {
     constructor(collection) {
         this.collection = collection || [];
@@ -136,66 +135,3 @@ class Queryable {
     }
 }
 exports.Queryable = Queryable;
-// Example usage:
-// Example data
-const data = [
-    { id: 1, name: 'John', age: 25 },
-    { id: 2, name: 'Alice', age: 30 },
-    { id: 3, name: 'Bob', age: 22 },
-    { id: 4, name: 'Sophie', age: 22 },
-    { id: 5, name: 'Sara', age: 29 },
-];
-// Example 1: Filtering and Projection
-const result1 = new Queryable(data)
-    .where(person => person.age > 22)
-    .orderBy(person => person.age)
-    .select(person => person.name)
-    .getCollection();
-console.log(result1);
-// Output: ['Bob', 'Sophie', 'Sara']
-// Example 2: Aggregation
-const count = new Queryable(data).count();
-const sumAges = new Queryable(data).sum(person => person.age);
-const minAge = new Queryable(data).min(person => person.age);
-const maxAge = new Queryable(data).max(person => person.age);
-const averageAge = new Queryable(data).average(person => person.age);
-console.log(`Count: ${count}`);
-console.log(`Sum of Ages: ${sumAges}`);
-console.log(`Min Age: ${minAge === null || minAge === void 0 ? void 0 : minAge.age}`);
-console.log(`Max Age: ${maxAge === null || maxAge === void 0 ? void 0 : maxAge.age}`);
-console.log(`Average Age: ${averageAge}`);
-// Example 3: Quantifiers
-const anyOver30 = new Queryable(data).any(person => person.age > 30);
-const allOver20 = new Queryable(data).all(person => person.age > 20);
-console.log(`Any person over 30: ${anyOver30}`);
-console.log(`All persons over 20: ${allOver20}`);
-// Example 4: Element Operations
-const firstPerson = new Queryable(data).firstOrDefault();
-const lastPerson = new Queryable(data).lastOrDefault();
-const singlePerson = new Queryable(data).singleOrDefault({ id: 6, name: 'Mostafa', age: 31 });
-console.log(`First Person: ${JSON.stringify(firstPerson)}`);
-console.log(`Last Person: ${JSON.stringify(lastPerson)}`);
-console.log(`Single Person (Alice): ${JSON.stringify(singlePerson)}`);
-// Example 5: Set Operations
-const distinctAges = new Queryable(data).select(person => person.age).distinct().getCollection();
-const unionResult = new Queryable(data).union([{ id: 6, name: 'David', age: 28 }]).getCollection();
-const intersectResult = new Queryable(data).intersect([{ id: 2, name: 'Alice', age: 30 }]).getCollection();
-const exceptResult = new Queryable(data).except([{ id: 4, name: 'Sophie', age: 22 }]).getCollection();
-console.log(`Distinct Ages: ${JSON.stringify(distinctAges)}`);
-console.log(`Union Result: ${JSON.stringify(unionResult)}`);
-console.log(`Intersect Result: ${JSON.stringify(intersectResult)}`);
-console.log(`Except Result: ${JSON.stringify(exceptResult)}`);
-// Example 6: Partitioning and Concatenation
-const take2 = new Queryable(data).take(2).getCollection();
-const skip2 = new Queryable(data).skip(2).getCollection();
-const concatResult = new Queryable(data).concat([{ id: 6, name: 'David', age: 28 }]).getCollection();
-console.log(`Take 2: ${JSON.stringify(take2)}`);
-console.log(`Skip 2: ${JSON.stringify(skip2)}`);
-console.log(`Concat Result: ${JSON.stringify(concatResult)}`);
-// Example 7: Conversion
-const arrayResult = new Queryable(data).toArray();
-const listResult = new Queryable(data).toList();
-const dictionaryResult = new Queryable(data).toDictionary(person => person.id);
-console.log(`Array Result: ${JSON.stringify(arrayResult)}`);
-console.log(`List Result: ${JSON.stringify(listResult)}`);
-console.log(`Dictionary Result: ${JSON.stringify([...dictionaryResult])}`);
